@@ -41,9 +41,9 @@ class profilecontoller extends Controller{
         ]);
 
         if ($request->has('user_image') && $request->has('user_image') !== "") {
-        $user_image_path= request('user_image')->store("uploads","public");
-        $image= Image::make(public_path("storage/{$user_image_path}"))->fit(1200,1200);
-        $image -> save();
+            $user_image_path= request('user_image')->store("uploads","public");
+            $image= Image::make(public_path("storage/{$user_image_path}"))->fit(1200,1200);
+            $image -> save();
         }
     
         //this will output data-uri (base64 image data)
