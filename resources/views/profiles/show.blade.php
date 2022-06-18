@@ -22,8 +22,8 @@
           </div>
           <div class="d-flex ">
               <p class="pr-3" ><strong>{{ $user->products->count() }}</strong> posts</p>
-              <p class="pr-3" style="padding-left: 1rem;"><strong>153</strong> followers</p>
-              <p class="pr-3" style="padding-left: 1rem;"><strong>153</strong> following</p>
+              {{--<p class="pr-3" style="padding-left: 1rem;"><strong>153</strong> followers</p>
+              <p class="pr-3" style="padding-left: 1rem;"><strong>153</strong> following</p>--}}
           </div>
           <div>
               <h5> {{ $user->user_biography ?? "dis is a description could go on even more"}}</h5>
