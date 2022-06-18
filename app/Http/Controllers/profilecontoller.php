@@ -8,7 +8,8 @@ use App\Models\Profile;
 
 class profilecontoller extends Controller{
     public function show($user)  
-    { $user = User::findOrFail($user); 
+    {
+        $user = User::findOrFail($user); 
 
         return view ('profiles.show', compact('user'));  
     } 
