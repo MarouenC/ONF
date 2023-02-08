@@ -4,29 +4,35 @@
 <div class="container">
   <div class="row">
       <div class="col-md-3 pt-2 text-center">
-        <img src="{{ Avatar::create($user->username)->toBase64() }}" alt="" class="rounded-circle" style="height: 10rem; width:10rem;">
+        @if(isset($user->userimage))
+          <img src="/storage/{{ $user->userimage->user_image_path }}" alt="" class="rounded-circle" style="height: 10rem; width:10rem;">
+        @else
+          <img src="{{ Avatar::create($user->username)->toBase64() }}" alt="" class="rounded-circle" style="height: 10rem; width:10rem;">
+        @endif
       </div>
       <div class="col-md-9 py-3 px-5">
-          <div class="d-flex justify-content-between align-items-baseline">
-              <h1>  {{ $user->username }}</h1>
+          <div class="d-flex justify-content-between align-items-baseline pb-2">
+              <div class='d-flex align-items-center'>
+                <h1>  {{ $user->username }}  @if($user->role=='partner' || $user->role=='admin' )<i class="bi bi-patch-check-fill"></i> @endif </h1>
+                @if(!$isFollowing && auth()->user()->id !== $user->id)
+                <follow-button user-id ="{{$user->id}}"></follow-button>
+                @elseif(auth()->user()->id !== $user->id)
+                <unfollow-button user-id ="{{$user->id}}"></unfollow-button>
+                @endif
+              </div>
               @if(auth()->user()->id==$user->id || auth()->user()->role=='admin' )
               <div class='d-flex'>
                 <a class="text-end" style="padding-left: 9rem;" href ="/profile/{{$user->id}}/edit">Edit profile </a>
-                {{Form::open(array('url' => '/profile/'.$user->id, 'method' => 'DELETE', 'files' => true))}}
-                  {{ csrf_field() }}
-                  {{ method_field('DELETE') }}
-                   <button type="submit" class="btn btn-danger" onclick="return confirm('Do you want to delete this user?')">Delete</button>
-                {{Form::close()}}
               </div>
               @endif
           </div>
           <div class="d-flex ">
               <p class="pr-3" ><strong>{{ $user->products->count() }}</strong> posts</p>
-              {{--<p class="pr-3" style="padding-left: 1rem;"><strong>153</strong> followers</p>
-              <p class="pr-3" style="padding-left: 1rem;"><strong>153</strong> following</p>--}}
+              <p class="pr-3" style="padding-left: 1rem;"><strong>{{ $nb_follower }}</strong> followers</p>
+              <p class="pr-3" style="padding-left: 1rem;"><strong>{{ $nb_followed }}</strong> following</p>
           </div>
           <div>
-              <h5> {{ $user->user_biography ?? "dis is a description could go on even more"}}</h5>
+              <h5> {{ $user->user_bio }}</h5>
           </div>
     </div>
   </div>

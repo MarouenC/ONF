@@ -9,11 +9,6 @@
         </div>
         @if(auth()->user()->id== $product->user_id || auth()->user()->role=='admin')
         <div class="col-6 d-flex flex-row-reverse "> 
-          {{Form::open(array('url' => '/product/'.$product->id, 'method' => 'DELETE', 'files' => true))}}
-             {{ csrf_field() }}
-             {{ method_field('DELETE') }}
-            <button type="submit" class="btn btn-danger" onclick="return confirm('Do you want to delete this product?')">Delete</button>
-          {{Form::close()}}
           <a href ="/product/{{$product->id}}/edit" class =" px-3" ><h6>Edit</h6></a>
         </div>
         @endif
@@ -50,17 +45,20 @@
             <h1 class="py-4"> {{ $product->product_name }} </h1>
             <h2 class="py-2" style="color : #df4759"> {{ $product->product_price }} dinars </h2>
             <hr>
-            <p><i class="bi bi-person"></i> :<a href="/profile/{{ $product->user_id }}">{{ $product->user->username }}</a><p>
+            <p><i class="bi bi-person"></i> :<a href="/profile/{{ $product->user_id }}">{{ $product->user->username }}</a>  @if($product->user->role=='partner' || $product->user->role=='admin' )<i class="bi bi-patch-check-fill"></i> @endif <p>
             <p><i class="bi bi-clock"></i> : {{ $product->created_at->format('d M y') }}</p>
             <p><i class="bi bi-tag"></i> : {{ $product->product_category }}</p>
             <p><i class="bi bi-geo-alt"></i> : {{ $product->product_location }}</p>
             <p><i class="bi bi-truck"></i> : {{ $product->product_deliverable }}</p>
             <hr>
             <p class="py-3">{{ $product->product_description }}</p>      
-            <form action ="/cart" class="text-center" enctype="multipart/form-data" method="POST">
+            @if($product->user->role=='partner' || $product->user->role=='admin')
+            <form action ="/order" class="text-center" enctype="multipart/form-data" method="POST">
               @csrf
-                <button type="submit " class="btn btn-outline-danger product-buttons my-4" id="liveToastBtn"><span style="font-size:smaller;"><i class="bi bi-cart"></i> Add to cart</span></button>
+                <input name="prod_id" value="{{ $product->id }}" hidden>
+                <button type="submit " class="btn btn-outline-danger product-buttons my-4" id="liveToastBtn" onclick="return ('item added to cart')"><span style="font-size:smaller;"><i class="bi bi-cart"></i> Add to cart</span></button>
             </form>
+            @endif
             <p class="py3 ">Or contact via : </p>
             <div class="accordion" id="accordionPanelsStayOpenExample">
               <div class="accordion-item">

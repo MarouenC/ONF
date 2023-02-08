@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cart;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Product;
 
-class Cartcontroller extends Controller
+class checkoutcontroller extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($user)
+    public function index(Order $order)
     {
+        $order = Order::findOrFail($order);
+        return view('checkout.index',  compact('order'));
         
     }
 
@@ -37,40 +39,39 @@ class Cartcontroller extends Controller
      */
     public function store(Request $request)
     {
-       
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Cart  $cart
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($order)
     {
-        $product = Product::findOrFail($product); 
-        return view ('cart.show', compact('product'));  
-    } 
+        $order = Order::findOrFail($order);
+        return view('checkout.show',  compact('order'));
+    }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Cart  $cart
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cart $cart)
+    public function edit(Order $order)
     {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Cart  $cart
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cart $cart)
+    public function update(Request $request, Order $order)
     {
         //
     }
@@ -78,10 +79,10 @@ class Cartcontroller extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Cart  $cart
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cart $cart)
+    public function destroy(Order $order)
     {
         //
     }

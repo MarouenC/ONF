@@ -25,56 +25,10 @@
           </div>
         </div>
         <div class="col-sm-3 p-2">
-          <select class="form-select" aria-label="Default select example">
-              <optgroup>
-                  <option selected>All Categories</option>
-                  <option value="Electronics">Electronics</option>
-                  <option value="Vehicules">vehicles</option>
-                  <option value="Real Estate">Real Estate</option>
-                  <option value="Outfits & style">Outfits & style</option>
-                  <option value="Fashion Accessories">Fashion Accessories</option>
-                  <option value="Computers">Computers</option>
-                  <option value="Sports and Outdoors">Sports and Outdoors</option>
-                  <option value="Toys and Games">Toys and Games</option>
-                  <option value="Home and Kitchen">Home and Kitchen</option>
-                  <option value="Beauty and Personal Care">Beauty and Personal Care</option>
-                  <option value="Pet Supplies">Pet Supplies</option>
-                  <option value="books">books</option>
-                  <option value="Video Games">Video Games</option>
-                  <option value="Software">Software</option>
-                </optgroup>
-          </select>
+          {{ Form::select('product_category', $product_categories_options, null, ['class' => 'form-select', 'id' => 'product_category']) }}
         </div>
         <div class="col-sm-3 p-2">
-          <select class="form-select" aria-label="Default select example">
-            <optgroup>
-                <option selected>All Governorates</option>
-                <option value="Tunis">Tunis</option>
-                <option value="Ariana">Ariana</option>
-                <option value="Ben Arous">Ben Arous</option>
-                <option value="Mannouba">Mannouba</option>
-                <option value="Bizerte">Bizerte</option>
-                <option value="Nabeul">Nabeul</option>
-                <option value="Béja">Béja</option>
-                <option value="Jendouba">Jendouba</option>
-                <option value="Zaghouan">Zaghouan</option>
-                <option value="Siliana">Siliana</option>
-                <option value="Le Kef">Le Kef</option>
-                <option value="Sousse">Sousse</option>
-                <option value="Monastir">Monastir</option>
-                <option value="Mahdia">Mahdia</option>
-                <option value="Kasserine">Kasserine</option>
-                <option value="Sidi Bouzid">Sidi Bouzid</option>
-                <option value="Kairouan">Kairouan</option>
-                <option value="Gafsa">Gafsa</option>
-                <option value="Sfax">Sfax</option>
-                <option value="Gabès">Gabès</option>
-                <option value="Médenine">Médenine</option>
-                <option value="Tozeur">Tozeur</option>
-                <option value="Kebili">Kebili</option>
-                <option value="Ttataouine">Ttataouine</option>
-              </optgroup>
-          </select>
+          {{ Form::select('product_location', $product_location_options, null, ['class' => 'form-select', 'id' => 'product_location']) }}
         </div>
         <div class="col-sm-2 p-2 text-center">
           <button type="submit" class="btn btn-danger" >Search</button>
@@ -86,31 +40,48 @@
       <h4 class="text-center ">Browse By Categories</h4>
     </div>
     <div class="container">
-        <div class="row justify-content-center my-5">
-            <div class="col-md-2 p-2 text-center">
-            <button class="btn btn-outline-danger category-swipe" href="#"><i class="bi bi-lightning"></i><br>Recent</button>
-            </div>
-            <div class="col-md-2 p-2  text-center">
-            <button class="btn btn-outline-danger category-swipe"  href="#"><i class="bi bi-phone"></i><br>Electronics</button>
-            </div>
-            <div class="col-md-2 p-2  text-center">
-                <button class="btn btn-outline-danger category-swipe"  href="#"><i class="bi bi-bicycle"></i><br>vehicles</button>
-            </div>
-            <div class="col-md-2 p-2 text-center">
-                <button class="btn btn-outline-danger category-swipe"  href="#"><i class="bi bi-bag"></i><br>Outfits</button>
-            </div>
-            <div class="col-md-2 p-2 text-center">
-                <button class="btn btn-outline-danger category-swipe"  href="#"><i class="bi bi-sunglasses"></i><br>Fashion</button>
-            </div>
-            <div class="col-md-2 p-2 text-center">
-            <button class="btn btn-outline-danger dropdown-toggle category-swipe " data-bs-toggle="dropdown" aria-expanded="false" type="submit"><i class="bi bi-three-dots"></i><br>More</button>
-            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-              <li><a class="dropdown-item" href="#">Computers</a></li>
-              <li><a class="dropdown-item" href="#">books</a></li>
-              <li><a class="dropdown-item" href="#">Sports and Outdoors</a></li>
-              <li><a class="dropdown-item" href="#">Video Games</a></li>
-            </ul>
+      <div class="row justify-content-center my-5">
+        <form method="GET" action="{{ url("/product") }}" class="col-md-2 p-2  text-center">
+          <button type ="submit" name="product_category" value="" class="btn btn-outline-danger category-swipe"><i class="bi bi-lightning"></i><br>Recent</button>
+        </form>
+        <form method="GET" action="{{ url("/product") }}" class="col-md-2 p-2  text-center">
+          <button type ="submit" name="product_category" value="Electronics" class="btn btn-outline-danger category-swipe"><i class="bi bi-phone"></i><br>Electronics</button>
+        </form>
+        <form method="GET" action="{{ url("/product") }}" class="col-md-2 p-2  text-center">
+          <button type ="submit" name="product_category" value="vehicules" class="btn btn-outline-danger category-swipe" ><i class="bi bi-bicycle"></i><br>vehicles</button>
+        </form>
+          <form method="GET" action="{{ url("/product") }}" class="col-md-2 p-2  text-center">
+          <button type ="submit" name="product_category" value="Outfits" class="btn btn-outline-danger category-swipe" ><i class="bi bi-bag"></i><br>Outfits</button>
+        </form>
+          <form method="GET" action="{{ url("/product") }}" class="col-md-2 p-2  text-center">
+          <button type ="submit" name="product_category" value="Fashion" class="btn btn-outline-danger category-swipe" ><i class="bi bi-sunglasses"></i><br>Fashion</button>
+        </form>
+        <div method="GET" action="{{ url("/product") }}" class="col-md-2 p-2  text-center">
+          <button class="btn btn-outline-danger dropdown-toggle category-swipe " data-bs-toggle="dropdown" aria-expanded="false" type="submit"><i class="bi bi-three-dots"></i><br>More</button>
+          <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <li>
+              <form method="GET" action="{{ url("/product") }}" class="col-md-2 p-2  text-center">
+                <button type ="submit" name="product_category" value="computers" class="btn btn-outline-danger category-home-list" >Computers</button>
+              </form>
+            </li>
+            <li>
+              <form method="GET" action="{{ url("/product") }}" class="col-md-2 p-2  text-center">
+                <button type ="submit" name="product_category" value="books" class="btn btn-outline-danger category-home-list">books</button>
+              </form>
+            </li>
+            <li>
+              <form method="GET" action="{{ url("/product") }}" class="col-md-2 p-2  text-center">
+                <button type ="submit" name="product_category" value="Sports and Outdoors" class="btn btn-outline-danger category-home-list">Sports and Outdoors</button>
+              </form>
+            </li>
+            <li>
+              <form method="GET" action="{{ url("/product") }}" class="col-md-2 p-2  text-center">
+                <button type ="submit" name="product_category" value=" Video Games" class="btn btn-outline-danger category-home-list"> Video Games</button>
+              </form>
+            </li>
+          </ul>
         </div>
+      </div>
     </div>
     <!--Carousel-->
     <div class="container my-5">

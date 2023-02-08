@@ -100,17 +100,150 @@
         <main class="py-4" style="margin-top:4rem;">
             @yield('content')
         </main>
-        <!--footer-->
-        <div class="container pt-5 ">
-            <footer class="row ">
-            <div class="col-2"><p><a class="footer-link" href="#">Help</a></p></div>
-            <div class="col-2"><p><a class="footer-link" href="#">Contact us</a></p></div>
-            <div class="col-2"><p><a class="footer-link" href="#">Conditions of Use</a></p></div>
-            <div class="col-2"><p><a class="footer-link" href="#">Privacy Notice</a></p></div>
-            <div class="col-2"><p><a class="footer-link" href="#">Homepage</a></p></div>
-            <div class="col-2"><p> &copy; 2022  Onf.com, Inc. or its affiliates</p></div>
-            </footer>
-        </div>
+       <!-- Footer -->
+        <footer class="text-center text-lg-start bg-light text-muted">
+            <!-- Section: Social media -->
+            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+                <!-- Left -->
+                    <div class="me-5 d-none d-lg-block">
+                        <h6>Get connected with us on social networks:</h6>
+                    </div>
+                <!-- Left -->
+        
+                <!-- Right -->
+                <div>
+                    <a
+                        class="btn text-white btn-floating m-1"
+                        style="background-color: #3b5998;"
+                        href="#!"
+                        role="button"
+                        ><i class="bi bi-facebook"></i></a>
+                    <a
+                        class="btn text-white btn-floating m-1"
+                        style="background-color: #55acee;"
+                        href="#!"
+                        role="button"
+                        ><i class="bi bi-twitter"></i
+                    ></a>
+                    <a
+                        class="btn text-white btn-floating m-1"
+                        style="background-color: #dd4b39;"
+                        href="#!"
+                        role="button"
+                        ><i class="bi bi-google"></i
+                    ></a>
+                    <a
+                        class="btn text-white btn-floating m-1"
+                        style="background-color: #ac2bac;"
+                        href="#!"
+                        role="button"
+                        ><i class="bi bi-instagram"></i
+                    ></a>
+                    <a
+                        class="btn text-white btn-floating m-1"
+                        style="background-color: #0082ca;"
+                        href="#!"
+                        role="button"
+                        ><i class="bi bi-linkedin"></i>
+                    </a>
+                    <a
+                        class="btn text-white btn-floating m-1"
+                        style="background-color: #333333;"
+                        href="#!"
+                        role="button"
+                        ><i class="bi bi-github"></i
+                    ></a>
+                </div>
+            </section>
+            <!-- Right -->
+            <!-- Section: Social media -->
+    
+            <!-- Section: Links  -->
+            <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <!-- Content -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                    <i class="fas fa-gem me-3"></i>Onf
+                    </h6>
+                    <p style="font-size:0.8rem;">
+                    On and Off is a website that allows customers to make any online selling announcements with no restrictions.
+                    </p>
+                </div>
+                <!-- Grid column -->
+        
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                    tools used
+                    </h6>
+                    <p style="font-size:0.8rem;">
+                    <a href="#!" class="text-reset">Php</a>
+                    </p>
+                    <p style="font-size:0.8rem;">
+                    <a href="#!" class="text-reset">bootstrap</a>
+                    </p>
+                    <p style="font-size:0.8rem;">
+                    <a href="#!" class="text-reset">Vue</a>
+                    </p>
+                    <p style="font-size:0.8rem;">
+                    <a href="#!" class="text-reset">Laravel</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+        
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                    Useful links
+                    </h6>
+                    <p style="font-size:0.8rem;">
+                    <a href="#!" class="text-reset">Pricing</a>
+                    </p>
+                    <p style="font-size:0.8rem;">
+                    <a href="#!" class="text-reset">Settings</a>
+                    </p>
+                    <p style="font-size:0.8rem;">
+                    <a href="#!" class="text-reset">Orders</a>
+                    </p>
+                    <p style="font-size:0.8rem;">
+                    <a href="#!" class="text-reset">Help</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+        
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                    <p style="font-size:0.8rem;"><i class="fa fa-institution"></i> Lafayette, Tunis, Tunisie</p>
+                    <p style="font-size:0.8rem;">
+                        <i class="fa fa-envelope"></i> 
+                    marouen@gmail.com
+                    </p>
+                    <p style="font-size:0.8rem;"><i class="bi bi-phone"></i> + 216 234 567 88</p>
+                    <p style="font-size:0.8rem;"><i class="bi bi-telephone"></i> + 216 234 567 89</p>
+                </div>
+                <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+            </section>
+            <!-- Section: Links  -->
+    
+            <!-- Copyright -->
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2021 Copyright:
+            <a class="text-reset fw-bold" href="https://onf.com/">onf.com</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
     </div>
 </body>
 </html>

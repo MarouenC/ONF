@@ -9,6 +9,7 @@
             <div class="col-md-6">
             <div class="container">
                 <form action="/action_page.php">
+                    @csrf
                     <h3>Billing Address</h3>
                     <div class="making_space">
                         <label for="fname"><i class="fa fa-user"></i> Full Name</label>
@@ -80,8 +81,12 @@
                 <i class="fa fa-shopping-cart"></i>
               </span>
             </h4>
-            <p><a class ="price_label" href="#">Product 1:</a> <span class="price">15 dt</span></p>
+            <p><a class ="price_label" href="/product/{{ $order->product->id }}">{{$order->quantity}} x {{$order->product->product_name}}</a>  : <span class="price">{{ $order->product->product_price}} dinars</span></p>
+            <p style ="margin-left:6rem;"> +8 dinars delivery </p>
             <hr>
+            <h4 class="py-3"style="font-style: oblique; color:#df4759">
+                Total : {{ $order->product->product_price*$order->quantity + 8}} Dinars
+            </h4>   
           </div>
         </div>
       </div>

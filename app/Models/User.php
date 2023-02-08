@@ -23,7 +23,8 @@ class User extends Authenticatable
         'password',
         'user_biography',
         'user_image',
-        'role'
+        'role',
+        'user_bio'
     ];
 
     /**
@@ -53,5 +54,17 @@ class User extends Authenticatable
     }
     public function cart(){
         return $this->hasOne(Cart::class);
+    }
+    public function userimage(){
+        return $this->hasOne(Userimage::class);
+    }
+    public function orders(){
+        return $this->HasMany(Order::class);
+    }
+    public function followed(){
+        return $this ->hasMany(Follower::class, 'follower_id');
+    }
+    public function follower(){
+        return $this ->hasMany(Follower::class, 'followed_id');
     }
 }
