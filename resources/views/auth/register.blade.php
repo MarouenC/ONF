@@ -60,36 +60,8 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <label for="user_biography" class="col-md-4 col-form-label text-md-end">Biography (optional)</label>
-
-                            <div class="col-md-6">
-                                <input id="user_biography" type="text" class="form-control @error('user_biography') is-invalid @enderror" name="user_biography" value="{{ old('user_biography') }}" autocomplete="user_biography" autofocus>
-
-                                @error('user_biography')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="profile_image" class="col-md-4 col-form-label text-md-end">Profile picture (optional)</label>
-                            <div class="col-md-6">
-                                <input id="profile_image" type="file"  
-                                class="form-control @error('profile_image') is-invalid @enderror" 
-                                name="profile_image" 
-                                enctype="multipart/form-data"
-                                value="{{ old('profile_image') }}">
-                                @error('profile_image')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
                         <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-4 text-center">
                                 <button type="submit" class="btn btn-danger">
                                     {{ __('Register') }}
                                 </button>

@@ -13,7 +13,7 @@
                     <input class="form-control search-bar" name="searchName" type="search" placeholder="Search user by name" aria-label="Search" >
                 </div>
                 <div class="col-md-3 py-1">
-                    <select class="form-select mb-3" name="role" aria-label="Default select example">
+                    <select class="form-select mb-3" name="filter" aria-label="Default select example">
                         <option selected disabled>Search by role</option>
                         <option value="admin">Administrator</option>
                         <option value="partner">Partners</option>
@@ -32,7 +32,7 @@
               <tr>
                 <th scope="col">#ID</th>
                 <th scope="col">Username</th>
-                <th scope="col">Role</th>
+                <th scope="col">current Role</th>
                 <th scope="col">manage user</th>
               </tr>
             </thead>
@@ -41,21 +41,42 @@
                     <tr class="align-baseline">
                         <th scope="row">{{ $user->id }}</th>
                         <td><a href="/profile/{{ $user->id }}">{{ $user->username }}</a></td>
-                        <td>
-                            <select class="form-select" name="filter" value="{{ $user->role }}" aria-label="Default select example">
-                                <option value="user">User</option>
-                                <option value="partner">Partner</option>
-                                <option value="admin">Administrator</option>
-                            </select>
-                        </td>
-                        <td class="d-flex justify-content-around mb-3">
-                            <button class="btn btn-success">save</button>
-                            <button class="btn btn-danger">delete</button>
-                        </td>
+                        <td>{{ $user->role }} </td>
+                                <td>
+                                <form method="POST" action="{{ route('profile.update',$user->id) }}">
+                                    @method('PATCH') 
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col">
+                                            <select class="form-select d-inline-block" name="role" aria-label="Default select example">
+                                                <option value="user">User</option>
+                                                <option value="partner">Partner</option>
+                                                <option value="admin">Administrator</option>
+                                            </select>
+                                        </div>
+                                        <div class="col d-flex justify-content-evenly">
+                                            <button class="btn btn-success d-inline-block" type="submit">Save</button>
+                                            </form>
+                                        
+                                            <form action="{{ route('profile.destroy', $user->id)}}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                    <input name="id" value="{{ $user->id }}" hidden>
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Do you want to delete this user?')">delete</button>
+                                            </form>
+                                            
+                                        </div>
+                                    </div>
+                            </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+             {{$users->Links('pagination::bootstrap-4')}}
+            </div>
+        </div>
     </div>
 </div>
 @endsection

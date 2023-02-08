@@ -3,6 +3,13 @@
 
 @section('content')
 <div class="container">
+    <div class="container text-end pb-3">
+        {{Form::open(array('url' => '/product/'.$product->id, 'method' => 'DELETE', 'files' => true))}}
+        {{ csrf_field() }}
+        {{ method_field('DELETE') }}
+       <button type="submit" class="btn btn-danger" onclick="return confirm('Do you want to delete this product?')"><i class="bi bi-trash"></i></button>
+     {{Form::close()}}
+    </div>
      <!--Main form-->
      {{Form::open(array('url' => '/product/'.$product->id, 'method' => 'PUT', 'files' => true))}}
         {{ csrf_field() }}
@@ -167,7 +174,7 @@
         <hr>
         <!--submit-->
         <div class="container mb-5 text-center">
-            <button class="btn btn-danger" type="submit"> Edit</button>
+            <button class="btn btn-success" type="submit"> Edit</button>
         </div>
     {{ Form::close() }}
 </div>

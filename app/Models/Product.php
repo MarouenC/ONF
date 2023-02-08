@@ -94,4 +94,7 @@ class Product extends Model
     public function product_image(){
         return $this ->hasMany(ProductImage::class);
     }
+    public function orders(){
+        return $this ->hasMany(Order::class);
+    }
 }

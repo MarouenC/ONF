@@ -22,7 +22,7 @@
           <form method="GET" action="{{ url("/product") }}">
             <select class="form-select mb-3" name="filter" aria-label="Default select example">
               <option selected disabled>filter</option>
-              <option value="all">On/Off</option>
+              <option value="">On/Off</option>
               <option value="partner">On</option>
               <option value="user">Off</option>
             </select>
@@ -76,13 +76,18 @@
                         </ul>
                       </div>
                       <div class="card-footer text-muted">
-                        {{ $product->product_location }}, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $product->user->username }}
+                        {{ $product->product_location }}, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/profile/{{ $product->user_id }}">{{ $product->user->username }}</a>  @if($product->user->role=='partner' || $product->user->role=='admin' )<i class="bi bi-patch-check-fill"></i> @endif
                       </div>
                     </div>
               </div>
             @endforeach
           </div>
         </Div>
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+          {{$products->Links('pagination::bootstrap-4')}}
+          </div>
+        </div>
       <div>
     </div>
   </div>

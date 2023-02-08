@@ -12,27 +12,23 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/checkout', function(){
-    return view('checkout');
-});
+
 
 
 Route::get('/', [App\Http\Controllers\Newhomecontroller::class, 'index'])->name('home');
+
 Route::group([
-        'namespace' => 'App\Http\Controllers',
-    ], function () {
+    'namespace' => 'App\Http\Controllers',
+], function () {
     Route::resource('product', 'Productscontroller');
     Route::resource('profile', 'profilecontoller');
     Route::resource('cart', 'Cartcontroller');
+    Route::resource('order', 'Orderscontroller');
+    Route::resource('checkout', 'checkoutcontroller');
+    Route::post('/follow', 'followersController@store');
+    Route::delete('/unfollow/{id}', 'followersController@destroy');
 });
 Auth::routes();
-
-
-
-Route::get('/checkout', function(){
-    return view('checkout');
-});
-
 
 
 /*

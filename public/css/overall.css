@@ -2,6 +2,23 @@
     height: 4rem;
     width: 7rem;
 }
+.category-home-list{
+    width: 7rem;
+}
+.bi-patch-check-fill{
+    color:blue;
+}
+.unfollowBtn:hover{
+    background-color:#df4759    !important;
+}
+
+.unfollowBtn:hover span {
+    display: none;
+  }
+  
+.unfollowBtn:hover:before {
+    content: "Unfollow";
+  }
 .white{
     color:rgb(255, 255, 255);
 }

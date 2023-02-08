@@ -25,6 +25,11 @@ class Productscontroller extends Controller
             $products->where('username', 'like', '%'.$request->searchName.'%');
             });
         }
+        if ($request->has('filter') && $request->filter !== "") {
+            $products= Product::whereHas('user', function($products) use($request) {
+            $products->where('role', 'like', '%'.$request->filter.'%');
+            });
+        }
         if ($request->has('product_category') && $request->has('product_category') !== "") {
             $products = $products->where('product_category', 'like', '%' . $request->product_category . '%');
         }
@@ -43,8 +48,7 @@ class Productscontroller extends Controller
         if ($request->has('maximum') && $request->maximum != "") {
             $products = $products->where('product_price', '<=', $request->maximum);
         }
-        $products = $products->get();
-        //dd($request->all());
+        $products = $products->paginate(21);
         return view('Products.index', compact('products', 'product_categories_options', 'product_location_options'));
     }
 
@@ -77,7 +81,7 @@ class Productscontroller extends Controller
             'product_deliverable' => 'required',
             'product_phone' => ['required','integer'],
             'product_email' => ['required','string','email','max:255']
-        ]);     
+        ]);
         
        $product_image_path= request('product_image_1')->store("uploads","public");
        $image= Image::make(public_path("storage/{$product_image_path}"))->fit(1200,1200);
@@ -135,7 +139,7 @@ class Productscontroller extends Controller
         $product-> update($validated);
        
         if($request->has('product_image_1')){
-            $product->product_image[0]->$productImage;
+            $product->product_image[0]->delete();
             $product_image_path = request('product_image_1')->store("uploads","public");
             $image= Image::make(public_path("storage/{$product_image_path}"))->fit(1200,1200);
             $image -> save();
@@ -145,7 +149,9 @@ class Productscontroller extends Controller
             ]);
         }
         if($request->has('product_image_2')){
+            if(isset($product->product_image[1])){
             $product->product_image[1]->delete();
+            }
             $product_image_path = request('product_image_2')->store("uploads","public");
             $image= Image::make(public_path("storage/{$product_image_path}"))->fit(1200,1200);
             $image -> save();
@@ -156,7 +162,9 @@ class Productscontroller extends Controller
         }
 
         if($request->has('product_image_3')){
-            $product->product_image[2]->delete();
+            if(isset($product->product_image[2])){
+                $product->product_image[2]->delete();
+                }
             $product_image_path = request('product_image_3')->store("uploads","public");
             $image= Image::make(public_path("storage/{$product_image_path}"))->fit(1200,1200);
             $image -> save();
@@ -167,7 +175,7 @@ class Productscontroller extends Controller
         }
         
         
-        return redirect('/profile/' . auth()-> user()->id);
+        return view('Products.show', compact('product'));
     }
     
     public function destroy(Product $product){
