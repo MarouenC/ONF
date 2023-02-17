@@ -64,7 +64,7 @@
                             <li class="nav-item-danger mx-1">
                                 <a href="\profile" class="nav-link" aria-current="page" >users</a>
                             </li>
-                            @endif
+                        @endif
                             <li class="nav-item-danger mx-1">
                                 <a href="\cart\{{ Auth::user()->id }}" class="nav-link" aria-current="page" ><i class="bi bi-cart-fill "></i> Cart</a>
                             </li>
